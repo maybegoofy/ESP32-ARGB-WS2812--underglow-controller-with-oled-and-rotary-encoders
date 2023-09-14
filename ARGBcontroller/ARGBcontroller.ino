@@ -135,175 +135,185 @@ void isrB(){
 }
 
 void buttPressG() {
-  if (digitalRead(butt_PINg) == LOW) {
-    curCol++;
-    curCol = curCol % 6;
-    //str1.setColor(0,0,255);
-    //delay(1000);
-    //str1.setColor(rVAL,gVAL,bVAL);
-    if (curCol == 0) { //Purple
-      rVAL = 77;
-      gVAL = 0;
-      bVAL = 255;
+  static unsigned long lastInterruptTime = 0;
+  unsigned long interruptTime = millis();
+  if (interruptTime - lastInterruptTime > 5) {
+    if (digitalRead(butt_PINg) == LOW) {
+      lastInterruptTime = interruptTime;
+      curCol++;
+      curCol = curCol % 6;
+      //str1.setColor(0,0,255);
+      //delay(1000);
+      //str1.setColor(rVAL,gVAL,bVAL);
+      if (curCol == 0) { //Purple
+        rVAL = 77;
+        gVAL = 0;
+        bVAL = 255;
+      }
+      else if (curCol == 1) {//red
+        rVAL = 255;
+        gVAL = 0;
+        bVAL = 0;
+      }
+      else if (curCol == 2) {//green
+        rVAL = 0;
+        gVAL = 255;
+        bVAL = 0;
+      }
+      else if (curCol == 3) {//blue
+        rVAL = 0;
+        gVAL = 0;
+        bVAL = 255;
+      }
+      else if (curCol == 4) {//other purple
+        rVAL = 123;
+        gVAL = 0;
+        bVAL = 255;
+      }
+      else if (curCol == 5) {//pink
+        rVAL = 255;
+        gVAL = 0;
+        bVAL = 215;
+      }
+      else if (curCol == 6) {//yellow
+        rVAL = 255;
+        gVAL = 255;
+        bVAL = 0;
+      }
+      else if (curCol == 7) {//light blue
+        rVAL = 0;
+        gVAL = 255;
+        bVAL = 255;
+      }
+      else if (curCol == 8) {//white
+        rVAL = 255;
+        gVAL = 255;
+        bVAL = 255;
+      }
+      else if (curCol == 9) {//orange
+        rVAL = 255;
+        gVAL = 119;
+        bVAL = 0;
+      }
+      str1.setColor(rVAL,gVAL,bVAL);
+      str2.setColor(rVAL,gVAL,bVAL);
+      str3.setColor(rVAL,gVAL,bVAL);
+      str4.setColor(rVAL,gVAL,bVAL);
+      cusCol = 0;
     }
-    else if (curCol == 1) {//red
-      rVAL = 255;
-      gVAL = 0;
-      bVAL = 0;
+    else {
+      //str1.setColor(255,0,0);
+      //delay(1000);
+      //str1.setColor(rVAL,gVAL,bVAL);
     }
-    else if (curCol == 2) {//green
-      rVAL = 0;
-      gVAL = 255;
-      bVAL = 0;
-    }
-    else if (curCol == 3) {//blue
-      rVAL = 0;
-      gVAL = 0;
-      bVAL = 255;
-    }
-    else if (curCol == 4) {//other purple
-      rVAL = 123;
-      gVAL = 0;
-      bVAL = 255;
-    }
-    else if (curCol == 5) {//pink
-      rVAL = 255;
-      gVAL = 0;
-      bVAL = 215;
-    }
-    else if (curCol == 6) {//yellow
-      rVAL = 255;
-      gVAL = 255;
-      bVAL = 0;
-    }
-    else if (curCol == 7) {//light blue
-      rVAL = 0;
-      gVAL = 255;
-      bVAL = 255;
-    }
-    else if (curCol == 8) {//white
-      rVAL = 255;
-      gVAL = 255;
-      bVAL = 255;
-    }
-    else if (curCol == 9) {//orange
-      rVAL = 255;
-      gVAL = 119;
-      bVAL = 0;
-    }
-    str1.setColor(rVAL,gVAL,bVAL);
-    str2.setColor(rVAL,gVAL,bVAL);
-    str3.setColor(rVAL,gVAL,bVAL);
-    str4.setColor(rVAL,gVAL,bVAL);
-    cusCol = 0;
-  }
-  else {
-    //str1.setColor(255,0,0);
-    //delay(1000);
-    //str1.setColor(rVAL,gVAL,bVAL);
   }
 }
 
 void buttPressB() {
- if (digitalRead(butt_PINb) == LOW) {
-    curMode++;
-    curMode = curMode % 6;
-    //str1.setColor(0,0,255);
-    //delay(1000);
-    //str1.setColor(rVAL,gVAL,bVAL);
-    if (curMode == 0) { //"Static Cruise"
-      str1.setColor(rVAL,gVAL,bVAL);
-      str2.setColor(rVAL,gVAL,bVAL);
-      str3.setColor(rVAL,gVAL,bVAL);
-      str4.setColor(rVAL,gVAL,bVAL);
+  static unsigned long lastInterruptTime = 0;
+  unsigned long interruptTime = millis();
+  if (interruptTime - lastInterruptTime > 5) {
+    if (digitalRead(butt_PINb) == LOW) {
+      lastInterruptTime = interruptTime;
+      curMode++;
+      curMode = curMode % 6;
+      //str1.setColor(0,0,255);
+      //delay(1000);
+      //str1.setColor(rVAL,gVAL,bVAL);
+      if (curMode == 0) { //"Static Cruise"
+        str1.setColor(rVAL,gVAL,bVAL);
+        str2.setColor(rVAL,gVAL,bVAL);
+        str3.setColor(rVAL,gVAL,bVAL);
+        str4.setColor(rVAL,gVAL,bVAL);
 
-      str1.setMode(FX_MODE_STATIC);
-      str2.setMode(FX_MODE_STATIC);
-      str3.setMode(FX_MODE_STATIC);
-      str4.setMode(FX_MODE_STATIC);
+        str1.setMode(FX_MODE_STATIC);
+        str2.setMode(FX_MODE_STATIC);
+        str3.setMode(FX_MODE_STATIC);
+        str4.setMode(FX_MODE_STATIC);
+      }
+      else if (curMode == 1) {//"Breathe"
+        str1.setSpeed(1000);
+        str2.setSpeed(1000);
+        str3.setSpeed(1000);
+        str4.setSpeed(1000);
+
+        str1.setColor(rVAL,gVAL,bVAL);
+        str2.setColor(rVAL,gVAL,bVAL);
+        str3.setColor(rVAL,gVAL,bVAL);
+        str4.setColor(rVAL,gVAL,bVAL);
+
+        str1.setMode(FX_MODE_BREATH);
+        str2.setMode(FX_MODE_BREATH);
+        str3.setMode(FX_MODE_BREATH);
+        str4.setMode(FX_MODE_BREATH);
+      }
+      else if (curMode == 2) {//knight rider
+        str1.setColor(rVAL,gVAL,bVAL);
+        str2.setColor(0,0,0);
+        str3.setColor(0,0,0);
+        str4.setColor(0,0,0);
+
+        str1.setSpeed(500);
+        str2.setSpeed(1000);
+        str3.setSpeed(1000);
+        str4.setSpeed(1000);
+
+
+        str1.setMode(FX_MODE_LARSON_SCANNER);
+        str2.setMode(FX_MODE_BREATH);
+        str3.setMode(FX_MODE_BREATH);
+        str4.setMode(FX_MODE_BREATH);
+      }
+      else if (curMode == 3) {//star power
+        str1.setColor(rVAL,gVAL,bVAL);
+        str2.setColor(rVAL,gVAL,bVAL);
+        str3.setColor(rVAL,gVAL,bVAL);
+        str4.setColor(rVAL,gVAL,bVAL);
+        
+        str1.setSpeed(1000);
+        str2.setSpeed(1000);
+        str3.setSpeed(1000);
+        str4.setSpeed(1000);
+
+        str1.setMode(FX_MODE_RAINBOW_CYCLE);
+        str2.setMode(FX_MODE_RAINBOW_CYCLE);
+        str3.setMode(FX_MODE_RAINBOW_CYCLE);
+        str4.setMode(FX_MODE_RAINBOW_CYCLE);
+      }
+      else if (curMode == 4) {//kylo crackle
+        str1.setColor(rVAL,gVAL,bVAL);
+        str2.setColor(rVAL,gVAL,bVAL);
+        str3.setColor(rVAL,gVAL,bVAL);
+        str4.setColor(rVAL,gVAL,bVAL);
+        
+        str1.setSpeed(100);
+        str2.setSpeed(100);
+        str3.setSpeed(100);
+        str4.setSpeed(100);
+
+
+        str1.setMode(FX_MODE_FIRE_FLICKER);
+        str2.setMode(FX_MODE_FIRE_FLICKER);
+        str3.setMode(FX_MODE_FIRE_FLICKER);
+        str4.setMode(FX_MODE_FIRE_FLICKER);
+      }
+      else if (curMode == 5) {//Twinkle
+        str1.setColor(rVAL,gVAL,bVAL);
+        str2.setColor(rVAL,gVAL,bVAL);
+        str3.setColor(rVAL,gVAL,bVAL);
+        str4.setColor(rVAL,gVAL,bVAL);
+        
+        str1.setMode(FX_MODE_TWINKLEFOX);
+        str2.setMode(FX_MODE_TWINKLEFOX);
+        str3.setMode(FX_MODE_TWINKLEFOX);
+        str4.setMode(FX_MODE_TWINKLEFOX);
+      }
     }
-    else if (curMode == 1) {//"Breathe"
-      str1.setSpeed(1000);
-      str2.setSpeed(1000);
-      str3.setSpeed(1000);
-      str4.setSpeed(1000);
-
-      str1.setColor(rVAL,gVAL,bVAL);
-      str2.setColor(rVAL,gVAL,bVAL);
-      str3.setColor(rVAL,gVAL,bVAL);
-      str4.setColor(rVAL,gVAL,bVAL);
-
-      str1.setMode(FX_MODE_BREATH);
-      str2.setMode(FX_MODE_BREATH);
-      str3.setMode(FX_MODE_BREATH);
-      str4.setMode(FX_MODE_BREATH);
+    else {
+      //str1.setColor(255,0,0);
+      //delay(1000);
+      //str1.setColor(rVAL,gVAL,bVAL);
     }
-    else if (curMode == 2) {//knight rider
-      str1.setColor(rVAL,gVAL,bVAL);
-      str2.setColor(0,0,0);
-      str3.setColor(0,0,0);
-      str4.setColor(0,0,0);
-
-      str1.setSpeed(500);
-      str2.setSpeed(1000);
-      str3.setSpeed(1000);
-      str4.setSpeed(1000);
-
-
-      str1.setMode(FX_MODE_LARSON_SCANNER);
-      str2.setMode(FX_MODE_BREATH);
-      str3.setMode(FX_MODE_BREATH);
-      str4.setMode(FX_MODE_BREATH);
-    }
-    else if (curMode == 3) {//star power
-      str1.setColor(rVAL,gVAL,bVAL);
-      str2.setColor(rVAL,gVAL,bVAL);
-      str3.setColor(rVAL,gVAL,bVAL);
-      str4.setColor(rVAL,gVAL,bVAL);
-      
-      str1.setSpeed(1000);
-      str2.setSpeed(1000);
-      str3.setSpeed(1000);
-      str4.setSpeed(1000);
-
-      str1.setMode(FX_MODE_RAINBOW_CYCLE);
-      str2.setMode(FX_MODE_RAINBOW_CYCLE);
-      str3.setMode(FX_MODE_RAINBOW_CYCLE);
-      str4.setMode(FX_MODE_RAINBOW_CYCLE);
-    }
-    else if (curMode == 4) {//kylo crackle
-      str1.setColor(rVAL,gVAL,bVAL);
-      str2.setColor(rVAL,gVAL,bVAL);
-      str3.setColor(rVAL,gVAL,bVAL);
-      str4.setColor(rVAL,gVAL,bVAL);
-      
-      str1.setSpeed(100);
-      str2.setSpeed(100);
-      str3.setSpeed(100);
-      str4.setSpeed(100);
-
-
-      str1.setMode(FX_MODE_FIRE_FLICKER);
-      str2.setMode(FX_MODE_FIRE_FLICKER);
-      str3.setMode(FX_MODE_FIRE_FLICKER);
-      str4.setMode(FX_MODE_FIRE_FLICKER);
-    }
-    else if (curMode == 5) {//Twinkle
-      str1.setColor(rVAL,gVAL,bVAL);
-      str2.setColor(rVAL,gVAL,bVAL);
-      str3.setColor(rVAL,gVAL,bVAL);
-      str4.setColor(rVAL,gVAL,bVAL);
-      
-      str1.setMode(FX_MODE_TWINKLEFOX);
-      str2.setMode(FX_MODE_TWINKLEFOX);
-      str3.setMode(FX_MODE_TWINKLEFOX);
-      str4.setMode(FX_MODE_TWINKLEFOX);
-    }
-  }
-  else {
-    //str1.setColor(255,0,0);
-    delay(1000);
-    //str1.setColor(rVAL,gVAL,bVAL);
   }
 }
 void refreshScreen() {
