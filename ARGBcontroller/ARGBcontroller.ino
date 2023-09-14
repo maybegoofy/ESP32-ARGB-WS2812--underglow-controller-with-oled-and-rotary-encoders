@@ -215,7 +215,7 @@ void buttPressG() {
 void buttPressB() {
  if (digitalRead(butt_PINb) == LOW) {
     curMode++;
-    curMode = curMode % 6;
+    curMode = curMode % 8;
     //str1.setColor(0,0,255);
     //delay(1000);
     //str1.setColor(rVAL,gVAL,bVAL);
@@ -313,15 +313,15 @@ void buttPressB() {
       str3.setColor(rVAL,gVAL,bVAL);
       //str4.setColor(rVAL,gVAL,bVAL);
       
-      str1.setSegment(0, 0, 29, FX_MODE_STATIC, (rVAL,gVAL,bVAL), 2000, NO_OPTIONS);
-      str1.setSegment(1, 30, 59, FX_MODE_STATIC, (rVAL2,gVAL2,bVAL2), 2000, NO_OPTIONS);
+      str1.setSegment(0, 0, 14, FX_MODE_STATIC, (rVAL,gVAL,bVAL), 2000, NO_OPTIONS);
+      str1.setSegment(1, 15, 29, FX_MODE_STATIC, (rVAL2,gVAL2,bVAL2), 2000, NO_OPTIONS);
       str2.setMode(FX_MODE_STATIC);
       str3.setMode(FX_MODE_STATIC);
       str4.setSegment(0, 0, 74, FX_MODE_STATIC, (rVAL2,gVAL2,bVAL2), 2000, NO_OPTIONS);
       str4.setSegment(1, 75, 149, FX_MODE_STATIC, (rVAL,gVAL,bVAL), 2000, NO_OPTIONS);
     }
     else if (curMode == 7) {//running test
-      str1.setSegment(0, 0, 59, FX_MODE_STATIC, (rVAL,gVAL,bVAL), 2000, NO_OPTIONS);
+      str1.setSegment(0, 0, 29, FX_MODE_STATIC, (rVAL,gVAL,bVAL), 2000, NO_OPTIONS);
       str2.setColor(rVAL,gVAL,bVAL);
       str3.setColor(rVAL,gVAL,bVAL);
       str4.setSegment(0, 0, 149, FX_MODE_STATIC, (rVAL,gVAL,bVAL), 2000, NO_OPTIONS);
@@ -339,7 +339,7 @@ void buttPressB() {
   }
 }
 void refreshScreen() {
-  char* mOdes[6] = {"Static Cruise","Breathe","Knight Rider","Star Power","Kylo Crackle","Twinkle"};
+  char* mOdes[6] = {"Static Cruise","Breathe","Knight Rider","Star Power","Kylo Crackle","Twinkle","SplitFace","testrun"};
   char* colName[10] = {"Purple","Red","Green","Blue","Purple2","Pink","Yellow","Light Blue","White","Orange"};
 
   oled.clearDisplay();
