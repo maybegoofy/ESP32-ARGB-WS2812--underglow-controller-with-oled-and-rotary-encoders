@@ -11,10 +11,10 @@
 Adafruit_SSD1306 oled(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, -1);
 
 #define LED_COUNT 150
-#define LED_PIN1 15 //front strip
-#define LED_PIN2 0 //skirt strip 1
-#define LED_PIN3 2 //skirt strip 2
-#define LED_PIN4 4 //interior strip
+#define LED_PIN1 15 //front strip, lower is driver(right) side
+#define LED_PIN2 0 //skirt strip Left
+#define LED_PIN3 2 //skirt strip Right
+#define LED_PIN4 4 //interior strip, lower is passenger(left) side
 #define butt_PINb 14
 #define butt_PINg 5
 //#define butt_PINr 14
@@ -34,9 +34,17 @@ volatile int rVAL = 77;
 volatile int gVAL = 0;
 volatile int bVAL = 255;
 
+int rStart2 = 77;
+int gStart2 = 0;
+int bStart2 = 255;
+
+volatile int rVAL2 = 77;
+volatile int gVAL2 = 0;
+volatile int bVAL2 = 255;
+
 volatile int curMode = 0;
 volatile int curCol = 0;
-volatile int cusCol = 1;
+volatile int cusCol = 0;
 
 #define TIMER_MS 50
 
@@ -137,7 +145,7 @@ void isrB(){
 void buttPressG() {
   if (digitalRead(butt_PINg) == LOW) {
     curCol++;
-    curCol = curCol % 6;
+    curCol = curCol % 10;
     //str1.setColor(0,0,255);
     //delay(1000);
     //str1.setColor(rVAL,gVAL,bVAL);
@@ -293,6 +301,30 @@ void buttPressB() {
       str2.setColor(rVAL,gVAL,bVAL);
       str3.setColor(rVAL,gVAL,bVAL);
       str4.setColor(rVAL,gVAL,bVAL);
+      
+      str1.setMode(FX_MODE_TWINKLEFOX);
+      str2.setMode(FX_MODE_TWINKLEFOX);
+      str3.setMode(FX_MODE_TWINKLEFOX);
+      str4.setMode(FX_MODE_TWINKLEFOX);
+    }
+    else if (curMode == 6) {//splitface
+      //str1.setColor(rVAL,gVAL,bVAL);
+      str2.setColor(rVAL2,gVAL2,bVAL2);
+      str3.setColor(rVAL,gVAL,bVAL);
+      //str4.setColor(rVAL,gVAL,bVAL);
+      
+      str1.setSegment(0, 0, 29, FX_MODE_STATIC, (rVAL,gVAL,bVAL), 2000, NO_OPTIONS);
+      str1.setSegment(1, 30, 59, FX_MODE_STATIC, (rVAL2,gVAL2,bVAL2), 2000, NO_OPTIONS);
+      str2.setMode(FX_MODE_STATIC);
+      str3.setMode(FX_MODE_STATIC);
+      str4.setSegment(0, 0, 74, FX_MODE_STATIC, (rVAL2,gVAL2,bVAL2), 2000, NO_OPTIONS);
+      str4.setSegment(1, 75, 149, FX_MODE_STATIC, (rVAL,gVAL,bVAL), 2000, NO_OPTIONS);
+    }
+    else if (curMode == 7) {//Twinkle
+      str1.setSegment(0, 0, 59, FX_MODE_STATIC, (rVAL,gVAL,bVAL), 2000, NO_OPTIONS);
+      str2.setColor(rVAL,gVAL,bVAL);
+      str3.setColor(rVAL,gVAL,bVAL);
+      str4.setSegment(0, 0, 149, FX_MODE_STATIC, (rVAL,gVAL,bVAL), 2000, NO_OPTIONS);
       
       str1.setMode(FX_MODE_TWINKLEFOX);
       str2.setMode(FX_MODE_TWINKLEFOX);
