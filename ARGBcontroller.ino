@@ -320,16 +320,16 @@ void buttPressB() {
       str4.setSegment(0, 0, 74, FX_MODE_STATIC, (rVAL2,gVAL2,bVAL2), 2000, NO_OPTIONS);
       str4.setSegment(1, 75, 149, FX_MODE_STATIC, (rVAL,gVAL,bVAL), 2000, NO_OPTIONS);
     }
-    else if (curMode == 7) {//Twinkle
+    else if (curMode == 7) {//running test
       str1.setSegment(0, 0, 59, FX_MODE_STATIC, (rVAL,gVAL,bVAL), 2000, NO_OPTIONS);
       str2.setColor(rVAL,gVAL,bVAL);
       str3.setColor(rVAL,gVAL,bVAL);
       str4.setSegment(0, 0, 149, FX_MODE_STATIC, (rVAL,gVAL,bVAL), 2000, NO_OPTIONS);
       
-      str1.setMode(FX_MODE_TWINKLEFOX);
-      str2.setMode(FX_MODE_TWINKLEFOX);
-      str3.setMode(FX_MODE_TWINKLEFOX);
-      str4.setMode(FX_MODE_TWINKLEFOX);
+      str1.setMode(FX_MODE_RUNNING_LIGHTS);
+      str2.setMode(FX_MODE_RUNNING_LIGHTS);
+      str3.setMode(FX_MODE_RUNNING_LIGHTS);
+      str4.setMode(FX_MODE_RUNNING_LIGHTS);
     }
   }
   else {
